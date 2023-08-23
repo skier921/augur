@@ -49,7 +49,7 @@ setup(
         "Flask-WTF",
         "pandas",
         "numpy",
-        "requests<=2.28.1",
+        "requests<=2.27.1",
         "psycopg2-binary",
         "click",
         "psutil",
