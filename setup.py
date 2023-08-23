@@ -69,7 +69,7 @@ setup(
         "blinker",
         "protobuf",
         "slack",
-        "boto3",
+        "boto3==1.28.32",
         "toml", 
         "mistune",
         "pyYaml", 
