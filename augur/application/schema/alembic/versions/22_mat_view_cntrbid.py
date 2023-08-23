@@ -17,7 +17,8 @@ depends_on = None
 
 
 def upgrade(): 
-   conn = op.get_bind() conn.execute(text(""" 
+   conn = op.get_bind() 
+   conn.execute(text(""" 
       alter TABLE
       augur_data.commits DROP CONSTRAINT fk_commits_contributors_3, 
       DROP CONSTRAINT fk_commits_contributors_4; 
