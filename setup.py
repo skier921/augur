@@ -33,8 +33,8 @@ setup(
         "Programming Language :: Python :: 3.8",
     ],
     install_requires=[
-        "chardet==5.1.0",
-        "urllib3 == 1.26.16",
+        "chardet==5.0.0",
+        "urllib3 == 1.26.12",
         "wheel",
         "sendgrid",
         "alembic",
