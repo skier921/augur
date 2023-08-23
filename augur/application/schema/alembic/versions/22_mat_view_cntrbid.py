@@ -34,16 +34,12 @@ def add_fix_keys_22(upgrade=True):
       conn = op.get_bind() 
       conn.execute(text(""" 
          alter TABLE
-         augur_data.commits DROP CONSTRAINT fk_commits_contributors_3, 
-         DROP CONSTRAINT fk_commits_contributors_4; 
+         augur_data.commits DROP CONSTRAINT if exists fk_commits_contributors_3, 
+         DROP CONSTRAINT if exists fk_commits_contributors_4; 
          alter TABLE augur_data.contributors 
-            DROP CONSTRAINT GH-UNIQUE-C, 
-            DROP CONSTRAINT
-            GL-cntrb-LOGIN-UNIQUE, 
-            ADD CONSTRAINT GH-UNIQUE-C UNIQUE
-            (gh_login) DEFERRABLE INITIALLY DEFERRED, 
-            ADD CONSTRAINT
-            GL-cntrb-LOGIN-UNIQUE UNIQUE (cntrb_login) DEFERRABLE INITIALLY DEFERRED;"""))
+            DROP CONSTRAINT if exists "GH-UNIQUE-C", 
+            DROP CONSTRAINT if exists
+            "GL-cntrb-LOGIN-UNIQUE";"""))
 
       conn = op.get_bind()
       conn.execute(text("""
