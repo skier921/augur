@@ -33,7 +33,7 @@ setup(
         "Programming Language :: Python :: 3.8",
     ],
     install_requires=[
-        "chardet==5.0.0",
+        "chardet==5.1.0",
         "urllib3 == 1.26.12",
         "wheel",
         "sendgrid",
@@ -138,16 +138,26 @@ setup(
         # "cmake>=3.26.4"    
     extras_require={
         "dev": [
-            "tox==4.6.0", # 3.25.1
-            "pytest==7.3.2", # 7.1.2
-            "toml >= 0.10.2", # 0.10.2
-            "ipdb==0.13.9", # 0.13.9
-            "sphinx==4.2.0", # 5.1.1
-            "sphinx_rtd_theme==1.0.0", # 1.0.0
-            "sphinxcontrib-openapi==0.8.1", # 0.7.0
-            "sphinxcontrib-redoc==1.6.0", # 1.6.0
-            "docutils>=0.14, <= 0.18" # 0.19
+            "tox", # 3.25.1
+            "pytest", # 7.1.2
+            "toml", # 0.10.2
+            "ipdb", # 0.13.9
+            "sphinx", # 5.1.1
+            "sphinx_rtd_theme", # 1.0.0
+            "sphinxcontrib-openapi", # 0.7.0
+            "sphinxcontrib-redoc", # 1.6.0
+            "docutils" # 0.19
         ]
+
+            # "tox==4.6.0", # 3.25.1
+            # "pytest==7.3.2", # 7.1.2
+            # "toml >= 0.10.2", # 0.10.2
+            # "ipdb==0.13.9", # 0.13.9
+            # "sphinx==4.2.0", # 5.1.1
+            # "sphinx_rtd_theme==1.0.0", # 1.0.0
+            # "sphinxcontrib-openapi==0.8.1", # 0.7.0
+            # "sphinxcontrib-redoc==1.6.0", # 1.6.0
+            # "docutils>=0.14, <= 0.18" # 0.19        
     },
     entry_points={
         "console_scripts": [
