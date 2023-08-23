@@ -34,7 +34,7 @@ setup(
     ],
     install_requires=[
         "chardet==5.1.0",
-        "urllib3 == 2.0.2",
+        "urllib3 == 1.26.16",
         "wheel",
         "sendgrid",
         "alembic",
@@ -69,7 +69,7 @@ setup(
         "blinker",
         "protobuf",
         "slack",
-        "boto3==1.26.165",
+        "boto3",
         "toml", 
         "mistune",
         "pyYaml", 
