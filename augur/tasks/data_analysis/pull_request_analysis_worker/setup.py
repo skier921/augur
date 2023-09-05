@@ -34,7 +34,7 @@ setup(
         'emoji==1.2.0',
         'joblib==1.0.1',
         'xgboost==1.4.2',
-        'scipy==1.8.1'#1.7.3'
+        'scipy==1.9.3'#1.7.3'
     ],
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
