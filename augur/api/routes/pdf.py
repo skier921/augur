@@ -35,12 +35,6 @@ from augur.api.routes import AUGUR_API_VERSION
 
 AUGUR_API_VERSION = 'api/unstable'
 
-def create_routes(server):
-
-    @server.app.route('/{}/complexity/project_languages'.format(AUGUR_API_VERSION), methods=["GET"])
-    def get_project_languages():
-
-
 @app.route('/{}//generate_pdf/<name>'.format(AUGUR_API_VERSION), methods=["GET"])
     def generate_pdf(name):
         # Create a PDF file in memory
