@@ -19,16 +19,18 @@ from augur.api.metrics.repo_meta import license_files
 from augur.api.metrics.insight import top_insights
 from augur.api.routes import AUGUR_API_VERSION
 
-@app.route('/{}/generate_pdf/<name>'.format(AUGUR_API_VERSION), methods=["GET"])
-    def generate_pdf(name):
-        # Create a PDF file in memory
-        pdf_buffer = io.BytesIO()
-        p = canvas.Canvas(pdf_buffer, pagesize=letter)
-        p.drawString(100, 750, f"Hello, {name}!")  # Customize the text with the parameter
-        p.showPage()
-        p.save()
-        pdf_buffer.seek(0)
-        response = Response(pdf_buffer.read())
-        response.headers['Content-Type'] = 'application/pdf'
-        response.headers['Content-Disposition'] = f'inline; filename={name}.pdf'
-        return response
+AUGUR_API_VERSION = 'api/unstable'
+
+@app.route('/{}/generate_pdf/<name>'.format(AUGUR_API_VERSION))
+def generate_pdf(name):
+    # Create a PDF file in memory
+    pdf_buffer = io.BytesIO()
+    p = canvas.Canvas(pdf_buffer, pagesize=letter)
+    p.drawString(100, 750, f"Hello, {name}!")  # Customize the text with the parameter
+    p.showPage()
+    p.save()
+    pdf_buffer.seek(0)
+    response = Response(pdf_buffer.read())
+    response.headers['Content-Type'] = 'application/pdf'
+    response.headers['Content-Disposition'] = f'inline; filename={name}.pdf'
+    return response
