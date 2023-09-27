@@ -2,11 +2,13 @@
 """
 Creates routes for user functionality
 """
+import json
+from augur.api.routes import AUGUR_API_VERSION
 import base64
 from augur.api.metrics.repo_meta import license_files
 from augur.api.metrics.insight import top_insights
 from augur.api.routes import AUGUR_API_VERSION
-from ..server import app, route_transform
+from ..server import app, route_transform, engine 
 import sqlalchemy as s
 import pandas as pd
 from augur.api.util import metric_metadata
@@ -15,11 +17,6 @@ import requests
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 from flask import request, Response, jsonify, session, render_template
-from augur.api.metrics.repo_meta import license_files
-from augur.api.metrics.insight import top_insights
-from augur.api.routes import AUGUR_API_VERSION
-
-AUGUR_API_VERSION = 'api/unstable'
 
 @app.route('/{}/generate_pdf/<name>'.format(AUGUR_API_VERSION))
 def generate_pdf(name):

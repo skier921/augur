@@ -1,14 +1,16 @@
 #SPDX-License-Identifier: MIT
 from flask import Response
-import sqlalchemy as s
-import pandas as pd
 from augur.api.util import metric_metadata
 import os
 import requests
+import base64
+import sqlalchemy as s
+import pandas as pd
+import json
+from augur.api.routes import AUGUR_API_VERSION
+from ..server import app, engine, render_template 
 
-AUGUR_API_VERSION = 'api/unstable'
-
-@server.app.route('/{}/complexity/project_languages'.format(AUGUR_API_VERSION))
+@app.route('/{}/complexity/project_languages'.format(AUGUR_API_VERSION))
 def get_project_languages():
     project_languages_sql = s.sql.text("""
         SELECT
@@ -51,7 +53,7 @@ def get_project_languages():
                 status=200,
                 mimetype="application/json")
 
-@server.app.route('/{}/complexity/project_files'.format(AUGUR_API_VERSION))
+@app.route('/{}/complexity/project_files'.format(AUGUR_API_VERSION))
 def get_project_files():
     project_files_sql = s.sql.text("""
         SELECT
@@ -88,7 +90,10 @@ def get_project_files():
                 status=200,
                 mimetype="application/json")
 
-@server.app.route('/{}/complexity/project_lines'.format(AUGUR_API_VERSION))
+#@app.route('/{}/collection_status/commits'.format(AUGUR_API_VERSION))
+#def commit_collection_status():  # TODO: make this name automatic - wrapper?
+
+@app.route('/{}/complexity/project_lines'.format(AUGUR_API_VERSION))
 def get_project_lines():
     project_lines_sql = s.sql.text("""
         SELECT
@@ -128,7 +133,7 @@ def get_project_lines():
                 status=200,
                 mimetype="application/json")
 
-@server.app.route('/{}/complexity/project_comment_lines'.format(AUGUR_API_VERSION))
+@app.route('/{}/complexity/project_comment_lines'.format(AUGUR_API_VERSION))
 def get_project_comment_lines():
     comment_lines_sql = s.sql.text("""
         SELECT
@@ -168,7 +173,7 @@ def get_project_comment_lines():
                 status=200,
                 mimetype="application/json")
 
-@server.app.route('/{}/complexity/project_blank_lines'.format(AUGUR_API_VERSION))
+@app.route('/{}/complexity/project_blank_lines'.format(AUGUR_API_VERSION))
 def get_project_blank_lines():
     blank_lines_sql = s.sql.text("""
         SELECT
@@ -209,7 +214,7 @@ def get_project_blank_lines():
                 mimetype="application/json")
     
 
-@server.app.route('/{}/complexity/project_file_complexity'.format(AUGUR_API_VERSION))
+@app.route('/{}/complexity/project_file_complexity'.format(AUGUR_API_VERSION))
 def get_project_file_complexity():
     project_file_complexity_sql = s.sql.text("""
         SELECT
