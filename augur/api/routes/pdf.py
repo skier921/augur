@@ -19,7 +19,7 @@ from augur.api.metrics.repo_meta import license_files
 from augur.api.metrics.insight import top_insights
 from augur.api.routes import AUGUR_API_VERSION
 
-@app.route('/{}//generate_pdf/<name>'.format(AUGUR_API_VERSION), methods=["GET"])
+@app.route('/{}/generate_pdf/<name>'.format(AUGUR_API_VERSION), methods=["GET"])
     def generate_pdf(name):
         # Create a PDF file in memory
         pdf_buffer = io.BytesIO()
@@ -27,8 +27,6 @@ from augur.api.routes import AUGUR_API_VERSION
         p.drawString(100, 750, f"Hello, {name}!")  # Customize the text with the parameter
         p.showPage()
         p.save()
-
-        # Set up response to serve the PDF
         pdf_buffer.seek(0)
         response = Response(pdf_buffer.read())
         response.headers['Content-Type'] = 'application/pdf'
