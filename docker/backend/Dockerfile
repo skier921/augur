@@ -2,7 +2,7 @@
 FROM python:3.8.11-slim-buster
 
 LABEL maintainer="outdoors@acm.org"
-LABEL version="0.51.1"
+LABEL version="0.53.1"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -42,5 +42,7 @@ RUN ./scripts/docker/install-go.sh
 RUN mkdir -p repos/ logs/ /augur/facade/
 
 COPY ./docker/backend/entrypoint.sh /
-RUN chmod +x /entrypoint.sh
-ENTRYPOINT /entrypoint.sh
+COPY ./docker/backend/init.sh /
+RUN chmod +x /entrypoint.sh /init.sh
+ENTRYPOINT ["/entrypoint.sh"]
+CMD /init.sh
