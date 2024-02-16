@@ -196,3 +196,4 @@ sendgrid.env
 *sendgrid*.env
 ./sendgrid.env
 sendgrid.env
+environment.txt
